@@ -29,13 +29,11 @@ function App() {
   const userCollectionRef = collection(db,"tbuser")
 
   async function createPost(){
-    alert("aaaaa")
     const user = await addDoc(userCollectionRef, {
-      name,
-      message
+      message:message,
+      name:name
     }).then(
       alert("Post criado com sucesso"),
-      window.location.reload()
     )
     console.log(user)
   }
@@ -54,31 +52,38 @@ function App() {
     <div>
       <Header/>
       <InputMessage>
-      
-      <input type="text"
-      placeholder="Digite sua Mensagem"
-      value={message}
-      onChange={(e) => {setMessage(e.target.value)}}
-      />
       <input 
       type="text"
       placeholder="DIgite seu nome"
       value={name}
       onChange={(e) => {setName(e.target.value)}}
        />
-      <button onClick={() => {createPost()}}>Enviar mensagem JOi</button>
+      
+      <input type="text"
+      placeholder="Digite sua Mensagem"
+      value={message}
+      onChange={(e) => {setMessage(e.target.value)}}
+      />
+     
+      <button onClick={createPost}>Enviar mensagem JOi</button>
 
       </InputMessage>
-      <Message>
-        {messages.map((messages) => {
+      
+        {messages.map((m) => {
           return(
-            <div key={messages.id}>
-              <MessageContent>{messages.message}</MessageContent>
-              <h3>{messages.name}</h3>
+            <div key={m.id}>
+              <Message>
+              <MessageContent>
+                {m.message}
+                <h3>{m.name}</h3>
+              </MessageContent>
+             
+              </Message>
+         
             </div>
           )
         })}
-      </Message>
+      
     </div>
   );
 }
