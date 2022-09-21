@@ -36,6 +36,7 @@ function App() {
       alert("Post criado com sucesso"),
     )
     console.log(user)
+    window.location.reload()
   }
   
 
@@ -71,16 +72,19 @@ function App() {
       
         {messages.map((m) => {
           return(
-            <div key={m.id}>
-              <Message>
-              <MessageContent>
-                {m.message}
-                <h3>{m.name}</h3>
-              </MessageContent>
+            <>
+            
+              <Message key={m.id} >
+                <MessageContent>
+                  <h2>{m.message}</h2>
+                  <h3>{m.name}</h3>
+                  <h3>{m.date? m.date : 'há 2 minutos'}</h3>
+                </MessageContent>
              
               </Message>
          
-            </div>
+            
+            </>
           )
         })}
       
