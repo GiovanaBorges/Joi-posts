@@ -65,7 +65,7 @@ function App() {
       onChange={(e) => {setMessage(e.target.value)}}
       />
      
-      <button onClick={createPost}>Enviar mensagem JOi</button>
+      <button onClick={createPost}>Enviar mensagem para JOi dizer</button>
 
       </InputMessage>
       
