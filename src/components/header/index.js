@@ -4,7 +4,7 @@ import {HeaderContent} from "./styles.header"
 const Header = () => {
   return (
     <HeaderContent>
-        Joi messages
+        Messages for Joi
     </HeaderContent>
   )
 }
