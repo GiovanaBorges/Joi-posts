@@ -23,20 +23,26 @@ const firebaseApp = initializeApp({
 function App() {
   const [message,setMessage] = useState("")
   const [name,setName] = useState("")
+  const [newDate,setNewDate] = useState("")
   const [messages,setMessages] = useState([])
 
   const db = getFirestore(firebaseApp)
   const userCollectionRef = collection(db,"tbuser")
 
   async function createPost(){
+    let newDate = new Date()
+    let date = newDate.getDate();
+    let month = newDate.getMonth() + 1;
+    let year = newDate.getFullYear();
     const user = await addDoc(userCollectionRef, {
       message:message,
-      name:name
+      name:name,
+      date:`${date}/${month}/${year}`
     }).then(
       alert("Post criado com sucesso"),
     )
     console.log(user)
-    window.location.reload()
+   
   }
   
 
@@ -78,7 +84,7 @@ function App() {
                 <MessageContent>
                   <h2>{m.message}</h2>
                   <h3>{m.name}</h3>
-                  <h3>{m.date? m.date : 'há 2 minutos'}</h3>
+                  <h3>{m.date ? m.date : "2 minutos ago"}</h3>
                 </MessageContent>
              
               </Message>
