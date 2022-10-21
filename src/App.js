@@ -40,8 +40,9 @@ function App() {
       date:`${date}/${month}/${year}`
     }).then(
       alert("Post criado com sucesso"),
+      window.location.reload()
     )
-    console.log(user)
+    //console.log(user)
    
   }
   
@@ -49,7 +50,7 @@ function App() {
   useEffect(() =>{
     const getUsers = async () =>{
       const data = await getDocs(userCollectionRef)
-      console.log(data.docs.map((doc) => ({...doc.data(), id:doc.id})))
+      //console.log(data.docs.map((doc) => ({...doc.data(), id:doc.id})))
       setMessages(data.docs.map((doc) => ({...doc.data(), id:doc.id})))
     }
     getUsers()
